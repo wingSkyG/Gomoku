@@ -1,0 +1,34 @@
+{
+    "name": "InputControls",
+    "maps": [
+        {
+            "name": "UI",
+            "id": "3c333d73-7d9f-496a-8a59-8fbcf5b5cddc",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "af8455bc-39b2-4fee-9e3e-1443de3e5530",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2432d5ea-2371-45a4-a77c-b65940158853",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
