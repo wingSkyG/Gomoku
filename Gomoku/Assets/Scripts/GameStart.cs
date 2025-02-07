@@ -5,30 +5,11 @@ using UnityEngine.InputSystem;
 
 public class GameStart : MonoBehaviour
 {
-    private InputControls _inputControls;
-    private InputAction _inputAction;
-    private UnityEvent _unityEvent = new UnityEvent();
-
-    private void Awake()
+    private void Start()
     {
-        _inputControls = new InputControls();
-        _inputAction = _inputControls.UI.Click;
-    }
+        InputManager.Instance._clickAction.performed += OnMouseLeftClick;
 
-    private void OnEnable()
-    {
-        _inputControls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        _inputControls.Enable();
-    }
-
-    void Start()
-    {
-        _inputAction.performed += OnClick;
-        _unityEvent.AddListener(OnCreatePiece);
+        EventManager.Instance.AddListener(EventName.ClickMouse, OnCreatePiece);
     }
 
     private void OnCreatePiece()
@@ -42,13 +23,8 @@ public class GameStart : MonoBehaviour
         Instantiate(obj, UIManager.Instance.GetUI("Board")).SetActive(true);
     }
 
-    private void OnClick(InputAction.CallbackContext context)
+    private void OnMouseLeftClick(InputAction.CallbackContext context)
     {
-        _unityEvent?.Invoke();
-    }
-
-    void Update()
-    {
-        
+        EventManager.Instance.Dispatch(EventName.ClickMouse);
     }
 }
