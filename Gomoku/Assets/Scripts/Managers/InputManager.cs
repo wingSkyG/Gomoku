@@ -1,19 +1,29 @@
-﻿using UnityEngine.InputSystem;
+﻿using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 namespace Managers
 {
     public class InputManager : BaseSingleton<InputManager>
     {
-        public InputAction _clickAction;
-        
         private InputControls _inputControls;
+        private InputAction _clickMouseLeft;
 
         public InputManager()
         {
             _inputControls = new InputControls();
-            _clickAction = _inputControls.UI.Click;
-            
             _inputControls.Enable();
+            
+            _clickMouseLeft = _inputControls.UI.Click;
+        }
+
+        public void Init()
+        {
+            _clickMouseLeft.performed += OnMouseLeftClick;
+        }
+        
+        private void OnMouseLeftClick(InputAction.CallbackContext callbackContext)
+        {
+            EventManager.Instance.Dispatch(EventName.ClickMouse);
         }
 
         ~InputManager()
