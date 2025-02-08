@@ -1,10 +1,13 @@
-﻿using UnityEngine.Events;
+﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace Managers
 {
     public class InputManager : BaseSingleton<InputManager>
     {
+        public Vector2 MouseValue;
+        
         private InputControls _inputControls;
         private InputAction _clickMouseLeft;
 
@@ -20,10 +23,17 @@ namespace Managers
         {
             _clickMouseLeft.performed += OnMouseLeftClick;
         }
+
+        public void Update()
+        {
+            MouseValue = Mouse.current.position.ReadValue();
+            Debug.Log(MouseValue);
+        }
         
         private void OnMouseLeftClick(InputAction.CallbackContext callbackContext)
         {
-            EventManager.Instance.Dispatch(EventName.ClickMouse);
+            // EventManager.Instance.Dispatch(EventName.ClickMouse);
+            EventManager.Instance.Dispatch<Vector2>(EventName.ClickMouse, MouseValue);
         }
 
         ~InputManager()

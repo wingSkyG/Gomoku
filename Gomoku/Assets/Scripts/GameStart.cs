@@ -1,8 +1,7 @@
-using System;
+using GameLogic.Board;
 using Managers;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.InputSystem;
+using Object = System.Object;
 
 public class GameStart : MonoBehaviour
 {
@@ -14,15 +13,20 @@ public class GameStart : MonoBehaviour
     private void Start()
     {
         EventManager.Instance.AddListener(EventName.ClickMouse, OnCreatePiece);
+
+        BoardCtrl boardCtrl = new BoardCtrl();
     }
 
-    private void OnCreatePiece()
+    private void Update()
     {
-        StartCoroutine(AssetManager.Instance.LoadAssetAsync<GameObject>("Prefabs/BlackPiece", InstantiatePiece));
+        InputManager.Instance.Update();
     }
 
-    private void InstantiatePiece(GameObject obj)
+    private void OnCreatePiece(Vector2 createPosition)
     {
-        Instantiate(obj, UIManager.Instance.GetUI("Board")).SetActive(true);
+        GameObject obj;
+        obj = AssetManager.Instance.LoadAsset<GameObject>("Assets/Resources_moved/Prefabs/BlackPiece.prefab");
+        obj = Instantiate(obj, UIManager.Instance.GetUI("Board"));
+        obj.transform.position = createPosition;
     }
 }

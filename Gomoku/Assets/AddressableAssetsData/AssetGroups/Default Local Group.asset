@@ -17,18 +17,18 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: d7b4b25f52be8784ea67e02b32a11cf9
   m_SerializeEntries:
-  - m_GUID: 0ac8623b7fba74c42b6a3e0a94b0a980
-    m_Address: Prefabs/BlackPiece
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 206af3cfb5f77cc47a1824007f4b0dbe
     m_Address: Prefabs/ImageBeginGame
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0ac8623b7fba74c42b6a3e0a94b0a980
+    m_Address: Assets/Resources_moved/Prefabs/BlackPiece.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6232726fe6642e04291229cde3ceecef
-    m_Address: Prefabs/WhitePiece
+    m_Address: Assets/Resources_moved/Prefabs/WhitePiece.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

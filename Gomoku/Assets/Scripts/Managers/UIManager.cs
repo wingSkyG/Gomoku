@@ -14,5 +14,15 @@ namespace Managers
 
             return (RectTransform)GameObject.Find(path).transform;
         }
+
+        public GameObject CreateUI(GameObject objToCreate, Transform trans)
+        {
+            return GameObject.Instantiate(objToCreate, trans);
+        }
+
+        public void SetAnchoredPosition(GameObject UI, Vector2 anchoredPosition)
+        {
+            UI.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
+        }
     }
 }

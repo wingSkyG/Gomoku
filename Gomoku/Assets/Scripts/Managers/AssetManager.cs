@@ -9,6 +9,24 @@ namespace Managers
 {
     public class AssetManager : BaseSingleton<AssetManager>
     {
+        public T LoadAsset<T>(string path) where T : Object
+        {
+            if (string.IsNullOrEmpty(path))
+            {
+                Debug.LogError("路径不能为空！");
+                return null;
+            }
+
+            var opHandle = Addressables.LoadAssetAsync<T>(path);
+            var asset = opHandle.WaitForCompletion();
+            if (asset == null)
+            {
+                Debug.LogError("加载失败" + path);
+            }
+
+            return asset;
+        }
+        
         public IEnumerator LoadAssetAsync<T>(string path, Action<T> callBack) where T : Object
         {
             if (string.IsNullOrEmpty(path))

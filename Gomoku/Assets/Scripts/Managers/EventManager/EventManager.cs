@@ -15,6 +15,11 @@ namespace Managers
             // _eventDic.Add(eventName, listener);
         }
         
+        public void AddListener<T>(UnityEvent<T> eventName, UnityAction<T> listener)
+        {
+            eventName.AddListener(listener);
+        }
+        
         // public void AddListener(string eventName, UnityAction listener)
         // {
         //     UnityEvent eventName = new UnityEvent();
@@ -24,6 +29,11 @@ namespace Managers
         public void Dispatch(UnityEvent eventName)
         {
             eventName?.Invoke();
+        }
+
+        public void Dispatch<T>(UnityEvent<T> eventName, T param)
+        {
+            eventName?.Invoke(param);
         }
     }
 }
